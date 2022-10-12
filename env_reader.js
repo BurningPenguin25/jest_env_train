@@ -1,5 +1,5 @@
-let fs = require('fs')
-let path = require('path');
+let fs = require('node:fs')
+let path = require('node:path');
 
 const  getVar=()=>{
     let pathFile = path.resolve(__dirname, '.env')
@@ -21,6 +21,5 @@ const  getVar=()=>{
         }
     })
 }
-getVar()
 
-console.log(process.env)
+module.exports = getVar()
