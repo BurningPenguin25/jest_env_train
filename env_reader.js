@@ -20,6 +20,7 @@ const  getVar=()=>{
             process.env[elem] = obj[elem]
         }
     })
+    return process.env
 }
 
 module.exports = getVar()
