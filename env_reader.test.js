@@ -4,17 +4,17 @@ const path = require('node:path')
 jest.mock('node:fs');
 jest.mock('node:path');
 
-const readFileMocked = jest.fn()// указать значение .mockReturnValue(true)
-const resolvePathMocked = jest.fn() // указать значение  .mockReturnValue(true)
+const readFileMocked = jest.fn().mockReturnValue(true)// указать возврат и значение .mockReturnValue()
+const resolvePathMocked = jest.fn().mockReturnValue() // указать возврат и значение  .mockReturnValue()
 
 fs.readFileSync = readFileMocked;
 path.resolve = resolvePathMocked;
 
-//const getVar = require('./env_reader') //импорт функции
+const getVar = require('./env_reader') //импорт функции
 
 describe('test function', () => {
  it('test 1', ()=>{
-  //getVar()
+  getVar()
   //expect().toBe()
  })
 });
