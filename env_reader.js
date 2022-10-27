@@ -1,12 +1,18 @@
 let fs = require('node:fs')
 let path = require('node:path');
 
-const  getVar=()=>{
-    let pathFile = path.resolve(__dirname, '.env')
-    let fsFile = fs.readFileSync(pathFile, {encoding: "utf8"})
+let pathFile = path.resolve(__dirname, '.env')
+let fsFile = fs.readFileSync(pathFile, {encoding: "utf8"})
 
-    let obj = {}
-    let spl = fsFile.split('\n')
+
+console.log(pathFile)
+console.log(fsFile) //AVR=some var TODOT=fdf
+
+
+const getVar = () => {
+     let obj = {}
+     let spl = fsFile.split('\n')
+console.log(spl)
 
     spl.map((elem)=>{
         let values = elem.split('=')
@@ -20,7 +26,6 @@ const  getVar=()=>{
             process.env[elem] = obj[elem]
         }
     })
-    return process.env
 }
 
-module.exports = getVar()
+module.exports = getVar

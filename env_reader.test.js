@@ -1,21 +1,30 @@
 
-const fs = require('node:fs'); // экспорт модулей
+
+const fs = require('node:fs');
+jest.mock('node:fs'); // импорт пакета и мок
+const fsMocked = jest.fn().mockReturnValue('AVR=some\nvar TODOT=fdf')//  преобразование в функцию
+fs.readFileSync = fsMocked //
+
 const path = require('node:path')
-
-jest.mock('node:fs'); // мокаем функций
-jest.mock('node:path');
-
-const readFileMocked = jest.fn().mockReturnValue(true)// указать возврат и значение .mockReturnValue()
-const resolvePathMocked = jest.fn().mockReturnValue() // указать возврат и значение  .mockReturnValue()
-
-fs.readFileSync = readFileMocked;
-path.resolve = resolvePathMocked;
+jest.mock('node:path')
+const pathMocked = jest.fn()
+path.resolve = pathMocked
 
 const getVar = require('./env_reader') //импорт функции
 
 describe('test function', () => {
  it('test 1', ()=>{
-  getVar()
-  //expect(readFileMocked.).toBe()
- })
+getVar()
+expect(fsMocked.mock.calls.length).toBe(1)
+  expect(pathMocked.mock.calls.length).toBe(1)
+})
+
+    it('test 2', ()=>{
+        let objectContain = `{}`
+        getVar()
+        expect().toBe()
+    })
+
 });
+
+
