@@ -6,12 +6,9 @@ let fsFile = fs.readFileSync(pathFile, {encoding: "utf8"})
 
 //console.log(pathFile)
 //console.log(fsFile) //AVR=some var TODOT=fdf
-
-
 const getVar = () => {
      let obj = {}
      let spl = fsFile.split('\n')
-//console.log(spl)
 
     spl.map((elem)=>{
         let values = elem.split('=')
@@ -25,9 +22,11 @@ const getVar = () => {
             process.env[elem] = obj[elem]
         }
     })
-    return process.env //добавил после
+   // return process.env //добавил после
 }
 
+getVar()
 module.exports = getVar
 
 
+console.log(process.env)
