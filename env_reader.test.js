@@ -20,11 +20,12 @@ expect(fsMocked.mock.calls.length).toBe(1)
 })
 
     it('test 2', ()=>{
-        let objectContain = `{}`
+        const env = process.env
         getVar()
-        expect().toBe()
+        expect(getVar()).toBe(env)
     })
 
+    it('test 3', ()=>{
+        expect( typeof getVar()).toBe('object')
+    })
 });
-
-
