@@ -18,13 +18,16 @@ getVar()
 expect(fsMocked.mock.calls.length).toBe(1)
   expect(pathMocked.mock.calls.length).toBe(1)
 })
+
 //тесты 2 и 3 работают с return process.env
     it('test 2', ()=>{
+        getVar()
         const env = process.env
         expect(getVar()).toBe(env)
     })
 
     it('test 3', ()=>{
+        getVar()
         expect( typeof getVar()).toBe('object')
     })
 //-------------------------------
@@ -35,9 +38,8 @@ expect(fsMocked.mock.calls.length).toBe(1)
         })
 
     it('test 5', ()=>{
-
         getVar()
-     const elemEnvAVR = process.env.AVR
+        const elemEnvAVR = process.env.AVR
         const elemEnvTODOT = process.env.TODOT
         expect(elemEnvAVR).toBe('some');
         expect(elemEnvTODOT).not.toBe('fdf')

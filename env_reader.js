@@ -22,7 +22,8 @@ const getVar = () => {
             process.env[elem] = obj[elem]
         }
     })
-   // return process.env //добавил после
+
+   // return process.env //добавлено для работы тестов 2 и 3
 }
 
 getVar()
